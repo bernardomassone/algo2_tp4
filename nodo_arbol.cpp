@@ -4,12 +4,14 @@ Nodo_arbol::Nodo_arbol(){
   hijo_izquierda = NULL;
   hijo_derecha = NULL;
   telefono = 0;
+  cliente = NULL;
 }
 
-Nodo_arbol::Nodo_arbol(unsigned int telefono){
+Nodo_arbol::Nodo_arbol(unsigned int telefono, Cliente* cliente){
   hijo_izquierda = NULL;
   hijo_derecha = NULL;
   this->telefono = telefono;
+  this->cliente = cliente;
 }
 
 void Nodo_arbol::asignar_hijo_izquierda(Nodo_arbol* hijo_izquierda){

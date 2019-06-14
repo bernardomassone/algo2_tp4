@@ -1,7 +1,8 @@
-#ifndef NODO_ARBOL_H
-#define NODO_ARBOL_H
+#ifndef _NODO_ARBOL_H_
+#define _NODO_ARBOL_H_
 
 #include <iostream>
+#include "cliente.h"
 
 class Nodo_arbol{
   //Atributos
@@ -9,6 +10,7 @@ class Nodo_arbol{
     Nodo_arbol* hijo_izquierda;
     Nodo_arbol* hijo_derecha;
     unsigned int telefono;
+    Cliente* cliente;
 
   //Métodos
   public:
@@ -16,7 +18,7 @@ class Nodo_arbol{
     Nodo_arbol();
 
     //Constructor con parámetros
-    Nodo_arbol(unsigned int telefono);
+    Nodo_arbol(unsigned int telefono, Cliente* cliente);
 
     //Asignar hijo de la izquierda
     //Descripción: Procedimiento que recibe una dirección de memoria del hijo que irá a la izquierda del nodo actual y la asigna al
@@ -49,6 +51,12 @@ class Nodo_arbol{
     //Obtener número de teléfono
     //Post: Método que devuelve el valor del atributo telefono de la clase
     unsigned int obtener_telefono();
+
+    //Asignar cliente
+    void asignar_cliente(Cliente* cliente);
+
+    Cliente* obtener_cliente();
+
 };
 
 #endif
