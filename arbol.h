@@ -31,6 +31,22 @@ class Arbol{
          */
         Nodo_arbol* buscar_cliente(Nodo_arbol* nodo, unsigned long telefono);
 
-        void insertar();
+        /* Descripcion: Inserta un nuevo cliente al arbol (y el numero de telefono), ordenado segun propiedad de abb
+         * Precodicion: Recibe un puntero a cliente no null
+         * Postcondicion: El cliente se inserta en la posicion correcta 
+         */
+        void insertar_cliente(Cliente* nuevo_cliente);
 
+        /* Descripcion: Elimina un cliente por su numero de telefono
+         * Precodicion: Recibe un numero de telefono
+         * Postcondicion: Si se encuentra, se elimina el cliente, reacomodando el arbol tal que siga cumpliendo las
+         *                propiedades de abb. En caso contrario se informa por pantalla que el cliente no se encuentra en el mismo
+         */
+        void eliminar_cliente(unsigned long telefono);
+
+        /* Descripcion: Destructor del arbol
+         * Precodicion: NaN
+         * Postcondicion: El arbol se elimina completamente
+         */
+        ~Arbol();
 };
