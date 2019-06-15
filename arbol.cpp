@@ -28,8 +28,8 @@ Nodo_arbol* Arbol::buscar_cliente(Nodo_arbol* nodo, unsigned long telefono){
     if(!nodo || telefono == nodo->obtener_cliente()->obtener_telefono())
         return nodo;
     if(telefono < nodo->obtener_cliente()->obtener_telefono())
-        buscar_cliente(nodo->obtener_hijo_izquierda(), telefono);
-    else buscar_cliente(nodo->obtener_hijo_derecha(), telefono);
+       return buscar_cliente(nodo->obtener_hijo_izquierda(), telefono);
+    else return buscar_cliente(nodo->obtener_hijo_derecha(), telefono);
 }
 
 void Arbol::insertar_cliente(Cliente* nuevo_cliente){
