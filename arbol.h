@@ -12,6 +12,8 @@ class Arbol{
          * Postcondicion: Arbol vacio creado
          */
         Arbol();
+
+		void call_recorrido_inorder();
         /* Descripcion: Realiza un recorrido inorder del arbol (imprime de menor a mayor)
          * Precodicion: Recibe un nodo (no necesariamente != nullptr)
          * Postcondicion: Imprime todos los datos (telefonos e individuos/familias) en orden

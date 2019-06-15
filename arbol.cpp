@@ -4,6 +4,10 @@ Arbol::Arbol(){
     raiz = nullptr;
 }
 
+void Arbol::call_recorrido_inorder() {
+	recorrido_inorder(raiz);
+}
+
 void Arbol::recorrido_inorder(Nodo_arbol* nodo){
     if(nodo){
         recorrido_inorder(nodo->obtener_hijo_izquierda());
@@ -53,8 +57,8 @@ void Arbol::eliminar_cliente(unsigned long telefono){}
 
 
 Arbol::~Arbol(){ //Destruimos desde la raiz hacia abajo
-    while(raiz){
+    /*while(raiz){
         eliminar_cliente(raiz->obtener_cliente()->obtener_telefono());
-    }
+    }*/
 }
 
