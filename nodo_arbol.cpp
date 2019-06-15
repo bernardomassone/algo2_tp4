@@ -37,3 +37,11 @@ void Nodo_arbol::asignar_telefono(unsigned int telefono){
 unsigned int Nodo_arbol::obtener_telefono(){
   return telefono;
 }
+
+void Nodo_arbol::asignar_cliente(Cliente* cliente) {
+	this->cliente = cliente;
+}
+
+Cliente* Nodo_arbol::obtener_cliente() {
+	return cliente;
+}

@@ -53,8 +53,17 @@ class Nodo_arbol{
     unsigned int obtener_telefono();
 
     //Asignar cliente
+	/* Descripcion: Recibe un puntero a cliente y lo asigna en el objeto
+	 * Precondicion: Un puntero a cliente distinto de nullptr
+	 * Postcondicion: El cliente es asignado
+	 */
     void asignar_cliente(Cliente* cliente);
-
+	
+	//Obtener cliente
+	/* Descripcion: Devuelve un puntero a cliente
+	* Precondicion: NaN
+	* Postcondicion: Se devuelve el cliente
+	*/
     Cliente* obtener_cliente();
 
 };
