@@ -1,15 +1,15 @@
 #include "nodo_arbol.h"
 
 Nodo_arbol::Nodo_arbol(){
-  hijo_izquierda = NULL;
-  hijo_derecha = NULL;
+  hijo_izquierda = nullptr;
+  hijo_derecha = nullptr;
   telefono = 0;
-  cliente = NULL;
+  cliente = nullptr;
 }
 
 Nodo_arbol::Nodo_arbol(unsigned int telefono, Cliente* cliente){
-  hijo_izquierda = NULL;
-  hijo_derecha = NULL;
+  hijo_izquierda = nullptr;
+  hijo_derecha = nullptr;
   this->telefono = telefono;
   this->cliente = cliente;
 }
@@ -44,4 +44,8 @@ void Nodo_arbol::asignar_cliente(Cliente* cliente) {
 
 Cliente* Nodo_arbol::obtener_cliente() {
 	return cliente;
+}
+
+Nodo_arbol::~Nodo_arbol(){
+	delete cliente;
 }

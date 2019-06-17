@@ -21,3 +21,5 @@ void Individuo::mostrar(){
 void Individuo::aplicar_descuento(float &precio){
   precio*=0.9;
 }
+
+Individuo::~Individuo(){}

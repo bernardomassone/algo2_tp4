@@ -37,6 +37,8 @@ class Individuo: public Cliente{
     //Pre: Método que recibe un número de tipo coma flotante
     //Post: Devuleve por referencia el valor del precio con su respectivo descuento
     void aplicar_descuento(float &precio);
+
+	~Individuo();
 };
 
 #endif

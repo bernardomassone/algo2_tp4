@@ -66,6 +66,8 @@ class Nodo_arbol{
 	*/
     Cliente* obtener_cliente();
 
+	~Nodo_arbol();
+
 };
 
 #endif

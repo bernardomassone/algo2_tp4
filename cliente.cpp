@@ -1,6 +1,8 @@
 #include "cliente.h"
 
-Cliente::Cliente(){}
+Cliente::Cliente(){
+  telefono = 0;
+}
 
 Cliente::Cliente(unsigned long telefono){
   this->telefono = telefono;
@@ -17,3 +19,5 @@ unsigned long Cliente::obtener_telefono(){
 void Cliente::mostrar(){}
 
 void Cliente::aplicar_descuento(float &precio){}
+
+Cliente::~Cliente(){}

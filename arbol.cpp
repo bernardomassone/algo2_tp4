@@ -53,12 +53,47 @@ void Arbol::insertar_cliente(Cliente* nuevo_cliente){
     else tail->asignar_hijo_derecha(nuevo);
 }
 
-void Arbol::eliminar_cliente(unsigned long telefono){}
+void Arbol::eliminar_cliente(unsigned long telefono){
+	raiz = eliminar_cliente_private(raiz, telefono);
+}
+
+Nodo_arbol* Arbol::eliminar_cliente_private(Nodo_arbol* raiz, unsigned long telefono){
+	if (!raiz) {
+		std::cout << "El arbol esta vacio" << std::endl;
+		return raiz;
+	}
+	if (telefono < raiz->obtener_telefono()) {
+		raiz->asignar_hijo_izquierda(eliminar_cliente_private(raiz->obtener_hijo_izquierda(), telefono));
+	}
+	else if (telefono > raiz->obtener_telefono()) {
+		raiz->asignar_hijo_derecha(eliminar_cliente_private(raiz->obtener_hijo_derecha(), telefono));
+	}
+	else {
+		if (!raiz->obtener_hijo_izquierda()) {
+			Nodo_arbol* temp = raiz->obtener_hijo_derecha();
+			delete raiz;
+			return temp;
+		}
+		else if (!raiz->obtener_hijo_derecha()) {
+			Nodo_arbol* temp = raiz->obtener_hijo_izquierda();
+			delete raiz;
+			return temp;
+		}
+
+		Nodo_arbol* temp = raiz->obtener_hijo_derecha();
+		while (temp->obtener_hijo_izquierda())
+			temp = temp->obtener_hijo_izquierda();
+		raiz->asignar_cliente(temp->obtener_cliente());
+		raiz->asignar_telefono(temp->obtener_telefono());
+		raiz->asignar_hijo_derecha(eliminar_cliente_private(raiz->obtener_hijo_derecha(), temp->obtener_telefono()));
+	}
+	return raiz;
+}
 
 
 Arbol::~Arbol(){ //Destruimos desde la raiz hacia abajo
-    /*while(raiz){
+    while(raiz){
         eliminar_cliente(raiz->obtener_cliente()->obtener_telefono());
-    }*/
+    }
 }
 

@@ -1,6 +1,8 @@
 #include "familia.h"
 
-Familia::Familia(): Cliente(){}
+Familia::Familia(): Cliente(){
+  integrantes = nullptr;
+}
 
 Familia::Familia(unsigned long telefono, Lista* integrantes): Cliente(telefono){
   this->integrantes = integrantes;
@@ -21,4 +23,9 @@ void Familia::mostrar(){
 
 void Familia::aplicar_descuento(float &precio){
   precio*=0.65;
+}
+
+Familia::~Familia(){
+	std::cout << "destructor familia" << std::endl;
+	delete integrantes;
 }

@@ -35,6 +35,8 @@ class Cliente{
     //Pre: Método que recibe un número de tipo coma flotante
     //Post: Devuleve por referencia el valor del precio con su respectivo descuento
     virtual void aplicar_descuento(float &precio);
+
+	virtual ~Cliente();
 };
 
 #endif
