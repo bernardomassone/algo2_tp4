@@ -24,7 +24,7 @@ class Arbol{
 		 * Postcondicion: Si se encuentra, se elimina el cliente, reacomodando el arbol tal que siga cumpliendo las
 		 *                propiedades de abb. En caso contrario se informa por pantalla que el cliente no se encuentra en el mismo
 		 */
-		Nodo_arbol* eliminar_cliente_private(Nodo_arbol* raiz, unsigned long telefono);
+		Nodo_arbol* eliminar_cliente_private(Nodo_arbol* nodo, unsigned long telefono);
 
     public:
         /* Descripcion: Instancia un arbol vacio (raiz == nullptr)
