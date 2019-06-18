@@ -38,6 +38,8 @@ class Individuo: public Cliente{
     //Post: Devuleve por referencia el valor del precio con su respectivo descuento
     void aplicar_descuento(float &precio);
 
+    Cliente* clonar();
+
 	~Individuo();
 };
 

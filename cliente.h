@@ -13,6 +13,8 @@ class Cliente{
     //Constructor
     Cliente();
 
+    virtual Cliente* clonar() = 0; 
+
     //Constructor con parámetros
     Cliente(unsigned long telefono);
 

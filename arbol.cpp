@@ -66,21 +66,17 @@ Nodo_arbol* Arbol::eliminar_cliente_private(Nodo_arbol* nodo, unsigned long tele
 		nodo->asignar_hijo_izquierda(eliminar_cliente_private(nodo->obtener_hijo_izquierda(), telefono));
 	}
 	else if (telefono > nodo->obtener_telefono()) {
-		nodo->asignar_hijo_derecha(eliminar_cliente_private(raiz->obtener_hijo_derecha(), telefono));
+		nodo->asignar_hijo_derecha(eliminar_cliente_private(nodo->obtener_hijo_derecha(), telefono));
 	}
 	else {
 		if (!nodo->obtener_hijo_izquierda()) {
 			Nodo_arbol* temp = nodo->obtener_hijo_derecha();
 			delete nodo;
-			nodo = nullptr;
-			if (!temp) return nullptr;
 			return temp;
 		}
 		else if (!nodo->obtener_hijo_derecha()) {
 			Nodo_arbol* temp = nodo->obtener_hijo_izquierda();
 			delete nodo;
-			nodo = nullptr;
-			if (!temp) return nullptr;
 			return temp;
 		}
 		Nodo_arbol* temp = nodo->obtener_hijo_derecha();
@@ -89,11 +85,10 @@ Nodo_arbol* Arbol::eliminar_cliente_private(Nodo_arbol* nodo, unsigned long tele
 
 		delete nodo->obtener_cliente(); //borro el viejo cliente
 
-		Cliente* nuevo = new Cliente;
-		*nuevo = *temp->obtener_cliente(); //creo el reemplazo del cliente a swapear, ya que si borro temp directamente pierdo el cliente
-
+		Cliente* nuevo = temp->obtener_cliente()->clonar();
+		 //creo el reemplazo del cliente a swapear, ya que si borro temp directamente pierdo el cliente
 		nodo->asignar_cliente(nuevo);
-		nodo->asignar_telefono(nuevo->obtener_telefono());
+		nodo->asignar_telefono(temp->obtener_telefono());
 		nodo->asignar_hijo_derecha(eliminar_cliente_private(nodo->obtener_hijo_derecha(), temp->obtener_telefono()));
 	}
 	return nodo;
@@ -104,6 +99,5 @@ Arbol::~Arbol(){ //Destruimos desde la raiz hacia abajo
     while(raiz){
         eliminar_cliente(raiz->obtener_cliente()->obtener_telefono());
     }
-	if (!raiz) std::cout << "Todo borrado ;)" << std::endl;
 }
 

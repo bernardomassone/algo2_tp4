@@ -22,4 +22,10 @@ void Individuo::aplicar_descuento(float &precio){
   precio*=0.9;
 }
 
-Individuo::~Individuo(){}
+Cliente* Individuo::clonar(){
+  return new Individuo(*this);
+}
+
+Individuo::~Individuo(){
+
+}

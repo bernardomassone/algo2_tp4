@@ -26,6 +26,11 @@ void Familia::aplicar_descuento(float &precio){
 }
 
 Familia::~Familia(){
-	std::cout << "destructor familia" << std::endl;
 	delete integrantes;
+}
+
+Cliente* Familia::clonar(){
+  Lista* nueva = new Lista;
+  nueva->copiar(nueva, integrantes);
+  return new Familia(this->obtener_telefono(), nueva);
 }
