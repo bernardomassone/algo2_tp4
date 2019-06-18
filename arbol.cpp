@@ -4,21 +4,21 @@ Arbol::Arbol(){
     raiz = nullptr;
 }
 
-void Arbol::call_recorrido_inorder() {
-	recorrido_inorder(raiz);
+void Arbol::recorrido_inorder() {
+	recorrido_inorder_private(raiz);
 }
 
-void Arbol::recorrido_inorder(Nodo_arbol* nodo){
+void Arbol::recorrido_inorder_private(Nodo_arbol* nodo){
     if(nodo){
-        recorrido_inorder(nodo->obtener_hijo_izquierda());
+        recorrido_inorder_private(nodo->obtener_hijo_izquierda());
         nodo->obtener_cliente()->mostrar();
-        recorrido_inorder(nodo->obtener_hijo_derecha());
+        recorrido_inorder_private(nodo->obtener_hijo_derecha());
     }
 }
 
-void Arbol::call_buscar_cliente(unsigned long telefono){
+void Arbol::buscar_cliente(unsigned long telefono){
     Nodo_arbol* buscado = nullptr;
-    buscado = buscar_cliente(raiz, telefono);
+    buscado = buscar_cliente_private(raiz, telefono);
     if(!buscado){
         std::cout << "El cliente buscado no se encuentra en el arbol" << std::endl;
     }
@@ -28,25 +28,31 @@ void Arbol::call_buscar_cliente(unsigned long telefono){
     }
 }
 
-Nodo_arbol* Arbol::buscar_cliente(Nodo_arbol* nodo, unsigned long telefono){
+Nodo_arbol* Arbol::buscar_cliente_private(Nodo_arbol* nodo, unsigned long telefono){
     if(!nodo || telefono == nodo->obtener_cliente()->obtener_telefono())
         return nodo;
     if(telefono < nodo->obtener_cliente()->obtener_telefono())
-       return buscar_cliente(nodo->obtener_hijo_izquierda(), telefono);
-    else return buscar_cliente(nodo->obtener_hijo_derecha(), telefono);
+       return buscar_cliente_private(nodo->obtener_hijo_izquierda(), telefono);
+    else return buscar_cliente_private(nodo->obtener_hijo_derecha(), telefono);
 }
 
 void Arbol::insertar_cliente(Cliente* nuevo_cliente){
     Nodo_arbol* head = raiz;
     Nodo_arbol* tail = nullptr;
+
+    if(head)
+      while(buscar_cliente_private(head, nuevo_cliente->obtener_telefono()) )
+        nuevo_cliente->asignar_telefono( (nuevo_cliente->obtener_telefono() + 1 ) );
+
     Nodo_arbol* nuevo = new Nodo_arbol(nuevo_cliente->obtener_telefono(), nuevo_cliente);
+
     while(head){
         tail = head;
         if(nuevo_cliente->obtener_telefono() < head->obtener_cliente()->obtener_telefono())
             head = head->obtener_hijo_izquierda();
         else head = head->obtener_hijo_derecha();
     }
-    if(!tail) //Estaba vacio 
+    if(!tail) //Estaba vacio
         raiz = nuevo;
     else if(tail->obtener_cliente()->obtener_telefono() > nuevo_cliente->obtener_telefono())
         tail->asignar_hijo_izquierda(nuevo);
@@ -100,4 +106,3 @@ Arbol::~Arbol(){ //Destruimos desde la raiz hacia abajo
         eliminar_cliente(raiz->obtener_cliente()->obtener_telefono());
     }
 }
-

@@ -1,6 +1,4 @@
-#ifndef _INDIVIDUO_H_
-#define _INDIVIDUO_H_
-
+#pragma once
 #include <iostream>
 #include <string>
 #include "cliente.h"
@@ -42,5 +40,3 @@ class Individuo: public Cliente{
 
 	~Individuo();
 };
-
-#endif

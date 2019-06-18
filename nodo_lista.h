@@ -1,6 +1,4 @@
-#ifndef _NODO_LISTA_H_
-#define _NODO_LISTA_H_
-
+#pragma once
 #include <string>
 
 const std::string VACIO = " ";
@@ -39,5 +37,3 @@ class Nodo_lista{
         //Post: Devuelve un puntero con la dirección de memoria del siguente nodo
         Nodo_lista* obtener_siguiente();
 };
-
-#endif

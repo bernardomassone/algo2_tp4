@@ -1,6 +1,4 @@
-#ifndef _NODO_ARBOL_H_
-#define _NODO_ARBOL_H_
-
+#pragma once
 #include <iostream>
 #include "cliente.h"
 
@@ -18,7 +16,7 @@ class Nodo_arbol{
     Nodo_arbol();
 
     //Constructor con parámetros
-    Nodo_arbol(unsigned int telefono, Cliente* cliente);
+    Nodo_arbol(unsigned long telefono, Cliente* cliente);
 
     //Asignar hijo de la izquierda
     //Descripción: Procedimiento que recibe una dirección de memoria del hijo que irá a la izquierda del nodo actual y la asigna al
@@ -46,11 +44,11 @@ class Nodo_arbol{
     //Descripción: Procedimiento que recibe un número de teléfono de un cliente y lo asigna al atributo telefono de la clase
     //Pre: Procedimiento que recibe un entero estrictamente positivo
     //Post: Asigna el valor recibido al atributo telefono de la clase
-    void asignar_telefono(unsigned int telefono);
+    void asignar_telefono(unsigned long telefono);
 
     //Obtener número de teléfono
     //Post: Método que devuelve el valor del atributo telefono de la clase
-    unsigned int obtener_telefono();
+    unsigned long obtener_telefono();
 
     //Asignar cliente
 	/* Descripcion: Recibe un puntero a cliente y lo asigna en el objeto
@@ -58,7 +56,7 @@ class Nodo_arbol{
 	 * Postcondicion: El cliente es asignado
 	 */
     void asignar_cliente(Cliente* cliente);
-	
+
 	//Obtener cliente
 	/* Descripcion: Devuelve un puntero a cliente
 	* Precondicion: NaN
@@ -69,5 +67,3 @@ class Nodo_arbol{
 	~Nodo_arbol();
 
 };
-
-#endif

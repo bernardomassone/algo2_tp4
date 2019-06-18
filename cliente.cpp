@@ -22,4 +22,6 @@ void Cliente::aplicar_descuento(float &precio){}
 
 Cliente::~Cliente(){}
 
-Cliente* Cliente::clonar(){}
+Cliente* Cliente::clonar(){
+  return nullptr;
+}

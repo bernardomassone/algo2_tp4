@@ -1,9 +1,10 @@
-#ifndef _MENU_H_
-#define _MENU_H_
-
+#pragma once
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "arbol.h"
+#include "individuo.h"
+#include "familia.h"
 
 const std::string RUTA = "clientes.txt";
 
@@ -15,9 +16,8 @@ class Menu{
   public:
     Menu();
 
-    void cargar_clientes(/*Arbol* clientes*/);
+    void cargar_clientes(Arbol* clientes);
 
-    void separar_linea(std::string linea);
+  private:
+    void cargar_y_separar_linea(std::string linea, Arbol* clientes);
 };
-
-#endif

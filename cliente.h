@@ -1,6 +1,4 @@
-#ifndef _CLIENTE_H_
-#define _CLIENTE_H_
-
+#pragma once
 #include <iostream>
 
 class Cliente{
@@ -13,7 +11,7 @@ class Cliente{
     //Constructor
     Cliente();
 
-    virtual Cliente* clonar() = 0; 
+    virtual Cliente* clonar() = 0;
 
     //Constructor con parámetros
     Cliente(unsigned long telefono);
@@ -40,5 +38,3 @@ class Cliente{
 
 	virtual ~Cliente();
 };
-
-#endif

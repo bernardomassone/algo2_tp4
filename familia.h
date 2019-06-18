@@ -1,6 +1,4 @@
-#ifndef _FAMILIA_H_
-#define _FAMILIA_H_
-
+#pragma once
 #include <iostream>
 #include <string>
 #include "cliente.h"
@@ -43,5 +41,3 @@ class Familia: public Cliente{
 
 	~Familia();
 };
-
-#endif

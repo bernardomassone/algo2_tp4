@@ -7,7 +7,7 @@ Nodo_arbol::Nodo_arbol(){
   cliente = nullptr;
 }
 
-Nodo_arbol::Nodo_arbol(unsigned int telefono, Cliente* cliente){
+Nodo_arbol::Nodo_arbol(unsigned long telefono, Cliente* cliente){
   hijo_izquierda = nullptr;
   hijo_derecha = nullptr;
   this->telefono = telefono;
@@ -30,11 +30,11 @@ Nodo_arbol* Nodo_arbol::obtener_hijo_derecha(){
   return hijo_derecha;
 }
 
-void Nodo_arbol::asignar_telefono(unsigned int telefono){
+void Nodo_arbol::asignar_telefono(unsigned long telefono){
   this->telefono = telefono;
 }
 
-unsigned int Nodo_arbol::obtener_telefono(){
+unsigned long Nodo_arbol::obtener_telefono(){
   return telefono;
 }
 

@@ -1,6 +1,4 @@
-#ifndef _LISTA_H_
-#define _LISTA_H_
-
+#pragma once
 #include <iostream>
 #include <string>
 #include "nodo_lista.h"
@@ -67,5 +65,3 @@ class Lista{
     //Destructor
     ~Lista();
 };
-
-#endif
