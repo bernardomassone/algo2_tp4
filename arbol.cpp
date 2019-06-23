@@ -4,6 +4,10 @@ Arbol::Arbol(){
     raiz = nullptr;
 }
 
+Nodo_arbol* Arbol::obtener_raiz(){
+    return raiz;
+}
+
 void Arbol::recorrido_inorder() {
 	recorrido_inorder_private(raiz);
 }
@@ -19,13 +23,28 @@ void Arbol::recorrido_inorder_private(Nodo_arbol* nodo){
 void Arbol::buscar_cliente(unsigned long telefono){
     Nodo_arbol* buscado = nullptr;
     buscado = buscar_cliente_private(raiz, telefono);
+    
     if(!buscado){
-        std::cout << "El cliente buscado no se encuentra en el arbol" << std::endl;
+        std::cout << std::endl << std::endl;
+        std::cout << "----------------------------------------------------" << std::endl;
+        std::cout << "El numero de telefono ingresado no esta asociado a ningun cliente." << std::endl;
     }
     else{
-        std::cout << "Mostrando cliente buscado" << std::endl;
         buscado->obtener_cliente()->mostrar();
     }
+}
+
+Nodo_arbol* Arbol::obtener_cliente(Nodo_arbol* nodo, unsigned long telefono){
+    Nodo_arbol* buscado = nullptr;
+    buscado = buscar_cliente_private(raiz, telefono);
+    
+    if(buscado){
+        std::cout << std::endl << std::endl;
+        std::cout << "----------------------------------------------------" << std::endl;
+        std::cout << "El numero de telefono ingresado no esta asociado a ningun cliente." << std::endl;
+    }
+    
+    return buscado; 
 }
 
 Nodo_arbol* Arbol::buscar_cliente_private(Nodo_arbol* nodo, unsigned long telefono){
@@ -65,7 +84,7 @@ void Arbol::eliminar_cliente(unsigned long telefono){
 
 Nodo_arbol* Arbol::eliminar_cliente_private(Nodo_arbol* nodo, unsigned long telefono){
 	if (!nodo) {
-		std::cout << "El arbol esta vacio" << std::endl;
+		std::cout << std::endl << "El numero de telefono ingresado no esta asociado a ningun cliente." << std::endl;
 		return nodo;
 	}
 	if (telefono < nodo->obtener_telefono()) {
@@ -96,6 +115,7 @@ Nodo_arbol* Arbol::eliminar_cliente_private(Nodo_arbol* nodo, unsigned long tele
 		nodo->asignar_cliente(nuevo);
 		nodo->asignar_telefono(temp->obtener_telefono());
 		nodo->asignar_hijo_derecha(eliminar_cliente_private(nodo->obtener_hijo_derecha(), temp->obtener_telefono()));
+        std::cout << std::endl << "Cliente eliminado." << std::endl;
 	}
 	return nodo;
 }

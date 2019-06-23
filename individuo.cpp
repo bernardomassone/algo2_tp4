@@ -15,7 +15,9 @@ std::string Individuo::obtener_nombre(){
 }
 
 void Individuo::mostrar(){
-  std::cout << obtener_telefono() << " " << nombre <<std::endl;
+  std::cout << "----------------------------------------------------" << std::endl;
+  std::cout << "Telefono: " << obtener_telefono() << std::endl;
+  std::cout << "Cliente: " << nombre << std::endl;
 }
 
 void Individuo::aplicar_descuento(float &precio){

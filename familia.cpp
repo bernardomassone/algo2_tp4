@@ -17,7 +17,10 @@ Lista* Familia::obtener_integrantes(){
 }
 
 void Familia::mostrar(){
-  std::cout << obtener_telefono() << " ";
+  std::cout << "----------------------------------------------------" << std::endl;
+  std::cout << "Telefono: ";
+  std::cout << obtener_telefono() << std::endl;
+  std::cout << "Clientes: ";
   integrantes->imprimir_lista();
 }
 

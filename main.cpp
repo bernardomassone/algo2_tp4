@@ -7,8 +7,7 @@ int main(){
   Arbol clientes;
   Menu menu;
 
-  menu.cargar_clientes(&clientes);
-  clientes.recorrido_inorder();
-
+  menu.inicializar(menu,&clientes);
+ 
   return 0;
 }

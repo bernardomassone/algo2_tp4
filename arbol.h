@@ -15,9 +15,14 @@ class Arbol{
          */
         Arbol();
 
-		    void recorrido_inorder();
+        /* Getter.
+         * Descripcion: Devuelve la raiz del arbol.
+         */
+        Nodo_arbol* obtener_raiz();
 
-        /* Descripcion: Llama a la funcion recursiva buscar_cliente y si se encuentra muestra el cliente buscado
+		void recorrido_inorder();
+
+        /* Descripcion: Llama a la funcion buscar_cliente y si se encuentra muestra el cliente buscado
          * Precodicion: Recibe un numero de telefono
          * Postcondicion: Muestra el cliente buscado en caso de existir en el arbol
          */
@@ -29,7 +34,13 @@ class Arbol{
          */
         void insertar_cliente(Cliente* nuevo_cliente);
 
-		    void eliminar_cliente(unsigned long telefono);
+         /* Descripcion: Llama a la funcion recursiva buscar_cliente y si se encuentra muestra el cliente buscado
+         * Precodicion: Recibe un numero de telefono y un nodo
+         * Postcondicion: devuelve el cliente buscado en caso de existir en el arbol
+         */
+        Nodo_arbol* obtener_cliente(Nodo_arbol* nodo, unsigned long telefono);
+
+		void eliminar_cliente(unsigned long telefono);
 
         /* Descripcion: Destructor del arbol
          * Precodicion: NaN
@@ -56,5 +67,5 @@ class Arbol{
         * Postcondicion: Si se encuentra, se elimina el cliente, reacomodando el arbol tal que siga cumpliendo las
         *                propiedades de abb. En caso contrario se informa por pantalla que el cliente no se encuentra en el mismo
         */
-        Nodo_arbol* eliminar_cliente_private(Nodo_arbol* nodo, unsigned long telefono);
+		Nodo_arbol* eliminar_cliente_private(Nodo_arbol* nodo, unsigned long telefono);
 };

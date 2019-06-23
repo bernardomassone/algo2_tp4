@@ -71,11 +71,13 @@ void Lista::eliminar_primero(){
 
 void Lista::imprimir_lista(){
   std::string aux;
-
-  for(int i = INICIO; i <= obtener_tam(); i++){
+  int i;
+  for(i = INICIO; i < obtener_tam(); i++){
     aux = obtener_nombre(i);
-    std::cout<<aux<<"  ";
+    std::cout<<aux<<",  ";
   }
+  aux = obtener_nombre(i);
+  std::cout<<aux<<".  ";
   std::cout<<std::endl;
 }
 
