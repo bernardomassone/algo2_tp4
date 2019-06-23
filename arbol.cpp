@@ -38,7 +38,7 @@ Nodo_arbol* Arbol::obtener_cliente(Nodo_arbol* nodo, unsigned long telefono){
     Nodo_arbol* buscado = nullptr;
     buscado = buscar_cliente_private(raiz, telefono);
     
-    if(buscado){
+    if(!buscado){
         std::cout << std::endl << std::endl;
         std::cout << "----------------------------------------------------" << std::endl;
         std::cout << "El numero de telefono ingresado no esta asociado a ningun cliente." << std::endl;
@@ -115,7 +115,6 @@ Nodo_arbol* Arbol::eliminar_cliente_private(Nodo_arbol* nodo, unsigned long tele
 		nodo->asignar_cliente(nuevo);
 		nodo->asignar_telefono(temp->obtener_telefono());
 		nodo->asignar_hijo_derecha(eliminar_cliente_private(nodo->obtener_hijo_derecha(), temp->obtener_telefono()));
-        std::cout << std::endl << "Cliente eliminado." << std::endl;
 	}
 	return nodo;
 }
