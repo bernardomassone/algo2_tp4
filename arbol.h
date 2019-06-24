@@ -3,69 +3,69 @@
 #include "nodo_arbol.h"
 
 class Arbol{
-    //Atributos
-    private:
-        Nodo_arbol* raiz;
+  //Atributos
+  private:
+    Nodo_arbol* raiz;
 
-		//Métodos
-    public:
-        /* Descripcion: Instancia un arbol vacio (raiz == nullptr)
-         * Precodicion: NaN
-         * Postcondicion: Arbol vacio creado
-         */
-        Arbol();
+	//Métodos
+  public:
+    //Constructor
+    Arbol();
 
-        /* Getter.
-         * Descripcion: Devuelve la raiz del arbol.
-         */
-        Nodo_arbol* obtener_raiz();
+    //Obtener raiz
+    //Post: Método que devuelve la dirección de memoria del nodo raiz del árbol
+    Nodo_arbol* obtener_raiz();
 
+    //Reccorrido inorder
+    //Post: Procedimiento que recorre el árbol inorder e imprime la información de cada nodo
 		void recorrido_inorder();
 
-        /* Descripcion: Llama a la funcion buscar_cliente y si se encuentra muestra el cliente buscado
-         * Precodicion: Recibe un numero de telefono
-         * Postcondicion: Muestra el cliente buscado en caso de existir en el arbol
-         */
-        void buscar_cliente(unsigned long telefono);
+    //Buscar cliente
+    //Descripción: Procedimiento que recibe un número de teléfono de un cliente, lo busca en el árbol e imprime por pantalla sus datos
+    //Pre: Procedimiento que recibe un entero estrictamente positivo
+    //Post: Busca e imprime por pantalla los datos del cliente representativo al entero recibido
+    void buscar_cliente(unsigned long telefono);
 
-        /* Descripcion: Inserta un nuevo cliente al arbol (y el numero de telefono), ordenado segun propiedad de abb
-         * Precodicion: Recibe un puntero a cliente no null
-         * Postcondicion: El cliente se inserta en la posicion correcta
-         */
-        void insertar_cliente(Cliente* nuevo_cliente);
+    //Insertar cliente
+    //Descripción: Procedimiento que recibe la dirección de memoria de unv cliente y lo inserta ordenadamente en el árbol
+    //Pre: Procedimiento que recibe la dirección de memoria de un objeto de clase Cliente
+    //Post: Inserta ordenadamente al cliente recibido en el árbol
+    void insertar_cliente(Cliente* nuevo_cliente);
 
-         /* Descripcion: Llama a la funcion recursiva buscar_cliente y si se encuentra muestra el cliente buscado
-         * Precodicion: Recibe un numero de telefono y un nodo
-         * Postcondicion: devuelve el cliente buscado en caso de existir en el arbol
-         */
-        Nodo_arbol* obtener_cliente(Nodo_arbol* nodo, unsigned long telefono);
+    //Obtener cliente
+    //Descripción: Método que recibe un número de teléfono y devuelve la dirección de memoria del cliente que posee ese número
+    //Pre: Método que recibe un entero estrictamente positivo
+    //Post: Devuelve la dirección de memoria del cliente representado por el entero recibido
+    Nodo_arbol* obtener_cliente(unsigned long telefono);
 
+    //Eliminar cliente
+    //Descripción: Procedimiento que recibe un número de teléfono y elimina del árbol al cliente que posee dicho número
+    //Pre: Procedimiento que recibe un entero estrictamente positivo
+    //Post: Elimina del árbol al cliente que posee el entero recibido
 		void eliminar_cliente(unsigned long telefono);
 
-        /* Descripcion: Destructor del arbol
-         * Precodicion: NaN
-         * Postcondicion: El arbol se elimina completamente
-         */
-        ~Arbol();
+    //Destructor
+    ~Arbol();
 
-    private:
-        /* Descripcion: Realiza un recorrido inorder del arbol (imprime de menor a mayor)
-        * Precodicion: Recibe un nodo (no necesariamente != nullptr)
-        * Postcondicion: Imprime todos los datos (telefonos e individuos/familias) en orden
-        */
-        void recorrido_inorder_private(Nodo_arbol* nodo);
+  private:
+    //Reccorrido inorder (privado)
+    //Descripción: Procedimiento que recibe una dirección de memoria de un nodo del árbol, recorre el árbol inorder e imprime la
+    //información de cada nodo
+    //Pre: Procedimiento que recibe una dirección de memoria de un nodo del árbol
+    //Post: Recorre el árbol inorder e imprime la información de cada nodo
+    void recorrido_inorder_private(Nodo_arbol* nodo);
 
-        /* Descripcion: Busca el cliente en el arbol a partir de un nodo y el telefono
-        * Precodicion: Recibe un puntero a nodo y un numero de telefono
-        * Postcondicion: En caso de existir el cliente en el arbol, devuelve un puntero al nodo contenedor
-        *                else devuelve nullptr
-        */
-        Nodo_arbol* buscar_cliente_private(Nodo_arbol* nodo, unsigned long telefono);
+    //Buscar cliente (privado)
+    //Descripción: Procedimiento que recibe una dirección de memoria de un nodo del árbol y un número de teléfono de un cliente,
+    //lo busca en el árbol e imprime por pantalla sus datos
+    //Pre: Procedimiento que recibe una dirección de memoria de un nodo del árbol y un entero estrictamente positivo
+    //Post: Busca e imprime por pantalla los datos del cliente representativo al entero recibido
+    Nodo_arbol* buscar_cliente_private(Nodo_arbol* nodo, unsigned long telefono);
 
-        /* Descripcion: Elimina un cliente por su numero de telefono
-        * Precodicion: Recibe un numero de telefono
-        * Postcondicion: Si se encuentra, se elimina el cliente, reacomodando el arbol tal que siga cumpliendo las
-        *                propiedades de abb. En caso contrario se informa por pantalla que el cliente no se encuentra en el mismo
-        */
+    //Eliminar cliente (privado)
+    //Descripción: Procedimiento que recibe una dirección de memoria de un nodo del árbol y un número de teléfono, y elimina del
+    //árbol al cliente que posee dicho número
+    //Pre: Procedimiento que recibe una dirección de memoria de un nodo del árbol y un entero estrictamente positivo
+    //Post: Elimina del árbol al cliente que posee el entero recibido
 		Nodo_arbol* eliminar_cliente_private(Nodo_arbol* nodo, unsigned long telefono);
 };

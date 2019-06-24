@@ -41,9 +41,9 @@ class Nodo_arbol{
     Nodo_arbol* obtener_hijo_derecha();
 
     //Asignar número de teléfono
-    //Descripción: Procedimiento que recibe un número de teléfono de un cliente y lo asigna al atributo telefono de la clase
+    //Descripción: Procedimiento que recibe un número de teléfono de un cliente y lo asigna al atributo télefono de la clase
     //Pre: Procedimiento que recibe un entero estrictamente positivo
-    //Post: Asigna el valor recibido al atributo telefono de la clase
+    //Post: Asigna el valor recibido al atributo teléfono de la clase
     void asignar_telefono(unsigned long telefono);
 
     //Obtener número de teléfono
@@ -51,19 +51,15 @@ class Nodo_arbol{
     unsigned long obtener_telefono();
 
     //Asignar cliente
-	/* Descripcion: Recibe un puntero a cliente y lo asigna en el objeto
-	 * Precondicion: Un puntero a cliente distinto de nullptr
-	 * Postcondicion: El cliente es asignado
-	 */
+	  //Descripcion: Recibe una dirección de memoria de un cliente y lo asigna al atributo cliente de la clase
+	  //Pre: Procedimiento que recibe una dirección de memoria (distinta a nullptr) de un cliente
+	  //Post: Asigna la dirección recibida al atributo cliente de la clase
     void asignar_cliente(Cliente* cliente);
 
-	//Obtener cliente
-	/* Descripcion: Devuelve un puntero a cliente
-	* Precondicion: NaN
-	* Postcondicion: Se devuelve el cliente
-	*/
+	  //Obtener cliente
+	  //Postcondicion: Método que devuelve la dirección de memoria del cliente de la clase
     Cliente* obtener_cliente();
 
-	~Nodo_arbol();
-
+    //Destructor
+	  ~Nodo_arbol();
 };

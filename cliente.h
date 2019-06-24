@@ -11,14 +11,12 @@ class Cliente{
     //Constructor
     Cliente();
 
-    virtual Cliente* clonar() = 0;
-
     //Constructor con parámetros
     Cliente(unsigned long telefono);
 
     //Asignar teléfono
     //Descripción: Procedimiento que recibe un número de teléfono y lo asigna al del atributo telefono de la clase
-    //Pre: Procedimiento que recibe número estrictamente positivo
+    //Pre: Procedimiento que recibe un entero estrictamente positivo
     //Post: Asigna el valor recibido al del atributo telefono de la clase
     void asignar_telefono(unsigned long telefono);
 
@@ -36,5 +34,10 @@ class Cliente{
     //Post: Devuleve por referencia el valor del precio con su respectivo descuento
     virtual void aplicar_descuento(float &precio);
 
-	virtual ~Cliente();
+    //Clonar cliente
+    //Post: Método que devuelve la dirección de memoria de una copia del objeto de la clase
+    virtual Cliente* clonar();
+
+    //Destructor
+	  virtual ~Cliente();
 };

@@ -7,7 +7,7 @@ int main(){
   Arbol clientes;
   Menu menu;
 
-  menu.inicializar(menu,&clientes);
- 
+  menu.inicializar(&clientes);
+
   return 0;
 }

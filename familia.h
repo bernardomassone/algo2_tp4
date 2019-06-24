@@ -34,10 +34,13 @@ class Familia: public Cliente{
     //Aplicar descuento
     //Descripción: Método que recibe el precio de un producto y devuleve otro con el descuento aplicado
     //Pre: Método que recibe un número de tipo coma flotante
-    //Post: Devuleve por referencia el valor del precio con su respectivo descuento
+    //Post: Devuelve por referencia el valor del precio con su respectivo descuento
     void aplicar_descuento(float &precio);
 
+    //Clonar familia
+    //Post: Método que devuelve la dirección de memoria de una copia del objeto de la clase
     Cliente* clonar();
 
-	~Familia();
+    //Destructor
+	  ~Familia();
 };

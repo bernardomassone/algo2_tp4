@@ -36,7 +36,10 @@ class Individuo: public Cliente{
     //Post: Devuleve por referencia el valor del precio con su respectivo descuento
     void aplicar_descuento(float &precio);
 
+    //Clonar individuo
+    //Post: Método que devuelve la dirección de memoria de una copia del objeto de la clase
     Cliente* clonar();
 
-	~Individuo();
+    //Destructor
+	  ~Individuo();
 };

@@ -7,15 +7,15 @@ Lista::Lista(){
 }
 
 bool Lista::esta_vacia(){
-    return !tam;
+  return !tam;
 }
 
 Nodo_lista* Lista::obtener_primero(){
-    return primero;
+  return primero;
 }
 
 Nodo_lista* Lista::obtener_ultimo(){
-    return ultimo;
+  return ultimo;
 }
 
 int Lista::obtener_tam(){
@@ -23,16 +23,16 @@ int Lista::obtener_tam(){
 }
 
 void Lista::agregar_nombre(std::string nombre){
-    Nodo_lista* nuevo = new Nodo_lista;
-    nuevo->asignar_nombre(nombre);
+  Nodo_lista* nuevo = new Nodo_lista;
+  nuevo->asignar_nombre(nombre);
 
-    if(esta_vacia() )
-        primero = nuevo;
-    else
-        ultimo->asignar_siguiente(nuevo);
+  if(esta_vacia() )
+    primero = nuevo;
+  else
+    ultimo->asignar_siguiente(nuevo);
 
-    ultimo = nuevo;
-    tam++;
+  ultimo = nuevo;
+  tam++;
 }
 
 std::string Lista::obtener_nombre(int posicion){
@@ -63,10 +63,10 @@ void Lista::copiar(Lista* copia, Lista* original){
 }
 
 void Lista::eliminar_primero(){
-    Nodo_lista* aux = primero;
-    primero = aux->obtener_siguiente();
-    delete aux;
-    tam--;
+  Nodo_lista* aux = primero;
+  primero = aux->obtener_siguiente();
+  delete aux;
+  tam--;
 }
 
 void Lista::imprimir_lista(){
@@ -82,7 +82,6 @@ void Lista::imprimir_lista(){
 }
 
 Lista::~Lista(){
-    while(!esta_vacia() ){
-        eliminar_primero();
-    }
+  while(!esta_vacia() )
+    eliminar_primero();
 }

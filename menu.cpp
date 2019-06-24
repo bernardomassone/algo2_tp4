@@ -8,18 +8,17 @@ void Menu::cargar_clientes(Arbol* clientes){
 	archivo_leer.open(RUTA);
   std::string linea;
 
-  if(archivo_leer.is_open()){
-		while(getline(archivo_leer, linea)){
-      cargar_y_separar_linea(linea, clientes);
-		}
-	}else{
+  if(archivo_leer.is_open())
+		while(getline(archivo_leer, linea))
+      separar_y_cargar_linea(linea, clientes);
+	else{
 		std::cout << "- Error al abrir archivo -" << std::endl;
 		return;
 	}
 	archivo_leer.close();
 }
 
-void Menu::cargar_y_separar_linea(std::string linea, Arbol* clientes){
+void Menu::separar_y_cargar_linea(std::string linea, Arbol* clientes){
   std::string miembro, primero;
   bool termino = false;
   unsigned tam;
@@ -63,11 +62,10 @@ void Menu::cargar_y_separar_linea(std::string linea, Arbol* clientes){
   }
 }
 
-void Menu::inicializar(Menu menu,Arbol* clientes){
-  menu.cargar_clientes(clientes);
-  
+void Menu::inicializar(Arbol* clientes){
+  cargar_clientes(clientes);
   int opcion = 0;
-  
+
   while(opcion != 6){
     mostrar();
     std::cout << "Ingrese opcion." << std::endl;
@@ -79,12 +77,12 @@ void Menu::inicializar(Menu menu,Arbol* clientes){
 
 void Menu::mostrar(){
   std::cout << std::endl << std::endl << std::endl;
-  std::cout << "------------------------MENU------------------------" << std::endl;
+  std::cout << "------------------------MENÚ------------------------" << std::endl;
   std::cout << "1 - Mostrar clientes." << std::endl;
   std::cout << "2 - Agregar nuevo cliente." << std::endl;
   std::cout << "3 - Dar de baja cliente." << std::endl;
-  std::cout << "4 - Buscar cliente" << std::endl;
-  std::cout << "5 - Consulta de precio." << std::endl;
+  std::cout << "4 - Buscar cliente." << std::endl;
+  std::cout << "5 - Consultar precio a cobrar." << std::endl;
   std::cout << "6 - Salir." << std::endl;
   std::cout << "----------------------------------------------------" << std::endl;
 }
@@ -100,8 +98,8 @@ void Menu::mostrar_tipo_clientes(){
 void Menu::crear_cliente(Arbol* clientes){
   int opcion = 0, seguir = 1;
   unsigned long telefono = NUMERO_DEFAULT;
-  
-  while(opcion != 1 && opcion != 2){ 
+
+  while(opcion != 1 && opcion != 2){
     std::cout << "Elija el tipo de cliente que desea ingresar." << std::endl;
     mostrar_tipo_clientes();
     std::cin >> opcion;
@@ -126,7 +124,7 @@ void Menu::crear_cliente(Arbol* clientes){
       std::cin.ignore();
       std::getline(std::cin, miembro,'\n');
       familia->agregar_nombre(miembro);
-      continuar();
+      continuar_agregado_integrantes();
       std::cin >> seguir;
     }
 
@@ -135,7 +133,7 @@ void Menu::crear_cliente(Arbol* clientes){
   }
 }
 
-void Menu::continuar(){
+void Menu::continuar_agregado_integrantes(){
   std::cout << std::endl << std::endl << std::endl;
   std::cout << "----------------------------------------------------" << std::endl;
   std::cout << "Desea agregar mas miembros de la familia?" << std::endl;
@@ -148,55 +146,53 @@ void Menu::continuar(){
 void Menu::aplicar_descuento(float precio_base, Arbol* clientes){
   unsigned long telefono = 0;
   Nodo_arbol* buscado = nullptr;
-  Nodo_arbol* raiz = clientes->obtener_raiz();
 
-  std::cout << "Ingrese el numero de telefono del cliente: ";
+  std::cout << "Ingrese el némero de teléfono del cliente a quien le venderá el producto: ";
   std::cin >> telefono;
-
-  buscado = clientes->obtener_cliente(raiz, telefono);
+  buscado = clientes->obtener_cliente(telefono);
 
   if(buscado){
-        buscado->obtener_cliente()->aplicar_descuento(precio_base);
-        buscado->obtener_cliente()->mostrar();
-        std::cout << "----------------------------------------------------" << std::endl;
-        std::cout << "Precio del producto: $";
-        std::cout << precio_base << std::endl;
-        std::cout << "----------------------------------------------------" << std::endl;
-    }
+    buscado->obtener_cliente()->aplicar_descuento(precio_base);
+    buscado->obtener_cliente()->mostrar();
+    std::cout << "----------------------------------------------------" << std::endl;
+    std::cout << "El precio del producto para este cliente es: $";
+    std::cout << precio_base << std::endl;
+    std::cout << "----------------------------------------------------" << std::endl;
+  }
 }
 
 void Menu::ejecutar_opcion(int opcion, Arbol* clientes){
   unsigned long telefono;
   switch(opcion){
     case 1:
-        std::cout << "----------------------CLIENTES----------------------" << std::endl;
-        clientes->recorrido_inorder();
-        std::cout << "----------------------------------------------------" << std::endl;
-        
+      std::cout << "----------------------CLIENTES----------------------" << std::endl;
+      clientes->recorrido_inorder();
+      std::cout << "----------------------------------------------------" << std::endl;
+
     break;
 
     case 2:
-        crear_cliente(clientes);    
+      crear_cliente(clientes);
     break;
 
     case 3:
-        std::cout << "Ingrese el numero de telefono del cliente: ";
-        std::cin >> telefono;
-        clientes->eliminar_cliente(telefono);   
+      std::cout << "Ingrese el numero de telefono del cliente: ";
+      std::cin >> telefono;
+      clientes->eliminar_cliente(telefono);
     break;
 
     case 4:
-        std::cout << "Ingrese el numero de telefono del cliente: ";
-        std::cin >> telefono;
-        clientes->buscar_cliente(telefono);
-        std::cout << "----------------------------------------------------" << std::endl;
+      std::cout << "Ingrese el numero de telefono del cliente: ";
+      std::cin >> telefono;
+      clientes->buscar_cliente(telefono);
+      std::cout << "----------------------------------------------------" << std::endl;
     break;
 
     case 5:
-        float precio_base;
-        std::cout << "Ingrese el precio del producto: ";
-        std::cin >> precio_base;
-        aplicar_descuento(precio_base, clientes);
+      float precio_base;
+      std::cout << "Ingrese el precio del producto a vender: ";
+      std::cin >> precio_base;
+      aplicar_descuento(precio_base, clientes);
     break;
 
     case 6:

@@ -28,6 +28,4 @@ Cliente* Individuo::clonar(){
   return new Individuo(*this);
 }
 
-Individuo::~Individuo(){
-
-}
+Individuo::~Individuo(){}
